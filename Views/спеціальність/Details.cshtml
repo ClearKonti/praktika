@@ -1,0 +1,45 @@
+﻿@model DekanatWeb.Models.спеціальність
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>спеціальність</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SpecialtyId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SpecialtyId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.назва)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.назва)
+        </dd>
+
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.факультет.назва)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.факультет.назва)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Редагувати", "Edit", new { id = Model.SpecialtyId }) |
+    @Html.ActionLink("Повернутися до списку", "Index")
+</p>

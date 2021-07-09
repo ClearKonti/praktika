@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище DekanatDBModelContainer" CdmEntityContainer="DekanatDBEntities1">
+    <EntitySetMapping Name="група">
+      <EntityTypeMapping TypeName="DekanatDBModel.група">
+        <MappingFragment StoreEntitySet="група">
+          <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+          <ScalarProperty Name="назва" ColumnName="назва" />
+          <ScalarProperty Name="SpecialtyId" ColumnName="SpecialtyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="предмет">
+      <EntityTypeMapping TypeName="DekanatDBModel.предмет">
+        <MappingFragment StoreEntitySet="предмет">
+          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+          <ScalarProperty Name="назва" ColumnName="назва" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="розклад">
+      <EntityTypeMapping TypeName="DekanatDBModel.розклад">
+        <MappingFragment StoreEntitySet="розклад">
+          <ScalarProperty Name="CurriculumId" ColumnName="CurriculumId" />
+          <ScalarProperty Name="курс" ColumnName="курс" />
+          <ScalarProperty Name="семестр" ColumnName="семестр" />
+          <ScalarProperty Name="лекційні_часи" ColumnName="лекційні_часи" />
+          <ScalarProperty Name="практичні_часи" ColumnName="практичні_часи" />
+          <ScalarProperty Name="лабораторні_часи" ColumnName="лабораторні_часи" />
+          <ScalarProperty Name="форма_захисту" ColumnName="форма_захисту" />
+          <ScalarProperty Name="курсова_робота" ColumnName="курсова_робота" />
+          <ScalarProperty Name="курсові_часи" ColumnName="курсові_часи" />
+          <ScalarProperty Name="SpecialtyId" ColumnName="SpecialtyId" />
+          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="спеціальність">
+      <EntityTypeMapping TypeName="DekanatDBModel.спеціальність">
+        <MappingFragment StoreEntitySet="спеціальність">
+          <ScalarProperty Name="SpecialtyId" ColumnName="SpecialtyId" />
+          <ScalarProperty Name="назва" ColumnName="назва" />
+          <ScalarProperty Name="FacultyId" ColumnName="FacultyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="студент">
+      <EntityTypeMapping TypeName="DekanatDBModel.студент">
+        <MappingFragment StoreEntitySet="студент">
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="імя" ColumnName="імя" />
+          <ScalarProperty Name="прізвище" ColumnName="прізвище" />
+          <ScalarProperty Name="телефон" ColumnName="телефон" />
+          <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="факультет">
+      <EntityTypeMapping TypeName="DekanatDBModel.факультет">
+        <MappingFragment StoreEntitySet="факультет">
+          <ScalarProperty Name="FacultyID" ColumnName="FacultyID" />
+          <ScalarProperty Name="назва" ColumnName="назва" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

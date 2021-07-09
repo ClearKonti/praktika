@@ -1,0 +1,422 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище DekanatDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="група">
+          <Key>
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="GroupId" Type="int" Nullable="false" />
+          <Property Name="назва" Type="nvarchar" MaxLength="50" />
+          <Property Name="SpecialtyId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="предмет">
+          <Key>
+            <PropertyRef Name="SubjectId" />
+          </Key>
+          <Property Name="SubjectId" Type="int" Nullable="false" />
+          <Property Name="назва" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="розклад">
+          <Key>
+            <PropertyRef Name="CurriculumId" />
+          </Key>
+          <Property Name="CurriculumId" Type="int" Nullable="false" />
+          <Property Name="курс" Type="int" Nullable="false" />
+          <Property Name="семестр" Type="int" Nullable="false" />
+          <Property Name="лекційні_часи" Type="int" Nullable="false" />
+          <Property Name="практичні_часи" Type="int" Nullable="false" />
+          <Property Name="лабораторні_часи" Type="int" Nullable="false" />
+          <Property Name="форма_захисту" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="курсова_робота" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="курсові_часи" Type="int" Nullable="false" />
+          <Property Name="SpecialtyId" Type="int" Nullable="false" />
+          <Property Name="SubjectId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="спеціальність">
+          <Key>
+            <PropertyRef Name="SpecialtyId" />
+          </Key>
+          <Property Name="SpecialtyId" Type="int" Nullable="false" />
+          <Property Name="назва" Type="nvarchar" MaxLength="50" />
+          <Property Name="FacultyId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="студент">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="StudentId" Type="int" Nullable="false" />
+          <Property Name="імя" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="прізвище" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="телефон" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GroupId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="факультет">
+          <Key>
+            <PropertyRef Name="FacultyID" />
+          </Key>
+          <Property Name="FacultyID" Type="int" Nullable="false" />
+          <Property Name="назва" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_група_SpecialtyId">
+          <End Role="спеціальність" Type="Self.спеціальність" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="група" Type="Self.група" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="спеціальність">
+              <PropertyRef Name="SpecialtyId" />
+            </Principal>
+            <Dependent Role="група">
+              <PropertyRef Name="SpecialtyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_розклад_SpecialtyId">
+          <End Role="спеціальність" Type="Self.спеціальність" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="розклад" Type="Self.розклад" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="спеціальність">
+              <PropertyRef Name="SpecialtyId" />
+            </Principal>
+            <Dependent Role="розклад">
+              <PropertyRef Name="SpecialtyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_розклад_SubjectId">
+          <End Role="предмет" Type="Self.предмет" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="розклад" Type="Self.розклад" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="предмет">
+              <PropertyRef Name="SubjectId" />
+            </Principal>
+            <Dependent Role="розклад">
+              <PropertyRef Name="SubjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_спеціальність_FacultyId">
+          <End Role="факультет" Type="Self.факультет" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="спеціальність" Type="Self.спеціальність" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="факультет">
+              <PropertyRef Name="FacultyID" />
+            </Principal>
+            <Dependent Role="спеціальність">
+              <PropertyRef Name="FacultyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_студент_GroupId">
+          <End Role="група" Type="Self.група" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="студент" Type="Self.студент" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="група">
+              <PropertyRef Name="GroupId" />
+            </Principal>
+            <Dependent Role="студент">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище DekanatDBModelContainer">
+          <EntitySet Name="група" EntityType="Self.група" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="предмет" EntityType="Self.предмет" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="розклад" EntityType="Self.розклад" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="спеціальність" EntityType="Self.спеціальність" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="студент" EntityType="Self.студент" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="факультет" EntityType="Self.факультет" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_група_SpecialtyId" Association="Self.FK_група_SpecialtyId">
+            <End Role="спеціальність" EntitySet="спеціальність" />
+            <End Role="група" EntitySet="група" />
+          </AssociationSet>
+          <AssociationSet Name="FK_розклад_SpecialtyId" Association="Self.FK_розклад_SpecialtyId">
+            <End Role="спеціальність" EntitySet="спеціальність" />
+            <End Role="розклад" EntitySet="розклад" />
+          </AssociationSet>
+          <AssociationSet Name="FK_розклад_SubjectId" Association="Self.FK_розклад_SubjectId">
+            <End Role="предмет" EntitySet="предмет" />
+            <End Role="розклад" EntitySet="розклад" />
+          </AssociationSet>
+          <AssociationSet Name="FK_спеціальність_FacultyId" Association="Self.FK_спеціальність_FacultyId">
+            <End Role="факультет" EntitySet="факультет" />
+            <End Role="спеціальність" EntitySet="спеціальність" />
+          </AssociationSet>
+          <AssociationSet Name="FK_студент_GroupId" Association="Self.FK_студент_GroupId">
+            <End Role="група" EntitySet="група" />
+            <End Role="студент" EntitySet="студент" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DekanatDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="група">
+          <Key>
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="GroupId" Type="Int32" Nullable="false" />
+          <Property Name="назва" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SpecialtyId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="спеціальність" Relationship="Self.FK_група_SpecialtyId" FromRole="група" ToRole="спеціальність" />
+          <NavigationProperty Name="студент" Relationship="Self.FK_студент_GroupId" FromRole="група" ToRole="студент" />
+        </EntityType>
+        <EntityType Name="предмет">
+          <Key>
+            <PropertyRef Name="SubjectId" />
+          </Key>
+          <Property Name="SubjectId" Type="Int32" Nullable="false" />
+          <Property Name="назва" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="розклад" Relationship="Self.FK_розклад_SubjectId" FromRole="предмет" ToRole="розклад" />
+        </EntityType>
+        <EntityType Name="розклад">
+          <Key>
+            <PropertyRef Name="CurriculumId" />
+          </Key>
+          <Property Name="CurriculumId" Type="Int32" Nullable="false" />
+          <Property Name="курс" Type="Int32" Nullable="false" />
+          <Property Name="семестр" Type="Int32" Nullable="false" />
+          <Property Name="лекційні_часи" Type="Int32" Nullable="false" />
+          <Property Name="практичні_часи" Type="Int32" Nullable="false" />
+          <Property Name="лабораторні_часи" Type="Int32" Nullable="false" />
+          <Property Name="форма_захисту" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="курсова_робота" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="курсові_часи" Type="Int32" Nullable="false" />
+          <Property Name="SpecialtyId" Type="Int32" Nullable="false" />
+          <Property Name="SubjectId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="предмет" Relationship="Self.FK_розклад_SubjectId" FromRole="розклад" ToRole="предмет" />
+          <NavigationProperty Name="спеціальність" Relationship="Self.FK_розклад_SpecialtyId" FromRole="розклад" ToRole="спеціальність" />
+        </EntityType>
+        <EntityType Name="спеціальність">
+          <Key>
+            <PropertyRef Name="SpecialtyId" />
+          </Key>
+          <Property Name="SpecialtyId" Type="Int32" Nullable="false" />
+          <Property Name="назва" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FacultyId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="група" Relationship="Self.FK_група_SpecialtyId" FromRole="спеціальність" ToRole="група" />
+          <NavigationProperty Name="розклад" Relationship="Self.FK_розклад_SpecialtyId" FromRole="спеціальність" ToRole="розклад" />
+          <NavigationProperty Name="факультет" Relationship="Self.FK_спеціальність_FacultyId" FromRole="спеціальність" ToRole="факультет" />
+        </EntityType>
+        <EntityType Name="студент">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="імя" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="прізвище" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="телефон" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GroupId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="група" Relationship="Self.FK_студент_GroupId" FromRole="студент" ToRole="група" />
+        </EntityType>
+        <EntityType Name="факультет">
+          <Key>
+            <PropertyRef Name="FacultyID" />
+          </Key>
+          <Property Name="FacultyID" Type="Int32" Nullable="false" />
+          <Property Name="назва" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="спеціальність" Relationship="Self.FK_спеціальність_FacultyId" FromRole="факультет" ToRole="спеціальність" />
+        </EntityType>
+        <Association Name="FK_група_SpecialtyId">
+          <End Role="спеціальність" Type="Self.спеціальність" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="група" Type="Self.група" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="спеціальність">
+              <PropertyRef Name="SpecialtyId" />
+            </Principal>
+            <Dependent Role="група">
+              <PropertyRef Name="SpecialtyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_студент_GroupId">
+          <End Role="група" Type="Self.група" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="студент" Type="Self.студент" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="група">
+              <PropertyRef Name="GroupId" />
+            </Principal>
+            <Dependent Role="студент">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_розклад_SubjectId">
+          <End Role="предмет" Type="Self.предмет" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="розклад" Type="Self.розклад" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="предмет">
+              <PropertyRef Name="SubjectId" />
+            </Principal>
+            <Dependent Role="розклад">
+              <PropertyRef Name="SubjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_розклад_SpecialtyId">
+          <End Role="спеціальність" Type="Self.спеціальність" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="розклад" Type="Self.розклад" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="спеціальність">
+              <PropertyRef Name="SpecialtyId" />
+            </Principal>
+            <Dependent Role="розклад">
+              <PropertyRef Name="SpecialtyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_спеціальність_FacultyId">
+          <End Role="факультет" Type="Self.факультет" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="спеціальність" Type="Self.спеціальність" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="факультет">
+              <PropertyRef Name="FacultyID" />
+            </Principal>
+            <Dependent Role="спеціальність">
+              <PropertyRef Name="FacultyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DekanatDBEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="група" EntityType="Self.група" />
+          <EntitySet Name="предмет" EntityType="Self.предмет" />
+          <EntitySet Name="розклад" EntityType="Self.розклад" />
+          <EntitySet Name="спеціальність" EntityType="Self.спеціальність" />
+          <EntitySet Name="студент" EntityType="Self.студент" />
+          <EntitySet Name="факультет" EntityType="Self.факультет" />
+          <AssociationSet Name="FK_група_SpecialtyId" Association="Self.FK_група_SpecialtyId">
+            <End Role="спеціальність" EntitySet="спеціальність" />
+            <End Role="група" EntitySet="група" />
+          </AssociationSet>
+          <AssociationSet Name="FK_студент_GroupId" Association="Self.FK_студент_GroupId">
+            <End Role="група" EntitySet="група" />
+            <End Role="студент" EntitySet="студент" />
+          </AssociationSet>
+          <AssociationSet Name="FK_розклад_SubjectId" Association="Self.FK_розклад_SubjectId">
+            <End Role="предмет" EntitySet="предмет" />
+            <End Role="розклад" EntitySet="розклад" />
+          </AssociationSet>
+          <AssociationSet Name="FK_розклад_SpecialtyId" Association="Self.FK_розклад_SpecialtyId">
+            <End Role="спеціальність" EntitySet="спеціальність" />
+            <End Role="розклад" EntitySet="розклад" />
+          </AssociationSet>
+          <AssociationSet Name="FK_спеціальність_FacultyId" Association="Self.FK_спеціальність_FacultyId">
+            <End Role="факультет" EntitySet="факультет" />
+            <End Role="спеціальність" EntitySet="спеціальність" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище DekanatDBModelContainer" CdmEntityContainer="DekanatDBEntities1">
+          <EntitySetMapping Name="група">
+            <EntityTypeMapping TypeName="DekanatDBModel.група">
+              <MappingFragment StoreEntitySet="група">
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="назва" ColumnName="назва" />
+                <ScalarProperty Name="SpecialtyId" ColumnName="SpecialtyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="предмет">
+            <EntityTypeMapping TypeName="DekanatDBModel.предмет">
+              <MappingFragment StoreEntitySet="предмет">
+                <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+                <ScalarProperty Name="назва" ColumnName="назва" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="розклад">
+            <EntityTypeMapping TypeName="DekanatDBModel.розклад">
+              <MappingFragment StoreEntitySet="розклад">
+                <ScalarProperty Name="CurriculumId" ColumnName="CurriculumId" />
+                <ScalarProperty Name="курс" ColumnName="курс" />
+                <ScalarProperty Name="семестр" ColumnName="семестр" />
+                <ScalarProperty Name="лекційні_часи" ColumnName="лекційні_часи" />
+                <ScalarProperty Name="практичні_часи" ColumnName="практичні_часи" />
+                <ScalarProperty Name="лабораторні_часи" ColumnName="лабораторні_часи" />
+                <ScalarProperty Name="форма_захисту" ColumnName="форма_захисту" />
+                <ScalarProperty Name="курсова_робота" ColumnName="курсова_робота" />
+                <ScalarProperty Name="курсові_часи" ColumnName="курсові_часи" />
+                <ScalarProperty Name="SpecialtyId" ColumnName="SpecialtyId" />
+                <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="спеціальність">
+            <EntityTypeMapping TypeName="DekanatDBModel.спеціальність">
+              <MappingFragment StoreEntitySet="спеціальність">
+                <ScalarProperty Name="SpecialtyId" ColumnName="SpecialtyId" />
+                <ScalarProperty Name="назва" ColumnName="назва" />
+                <ScalarProperty Name="FacultyId" ColumnName="FacultyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="студент">
+            <EntityTypeMapping TypeName="DekanatDBModel.студент">
+              <MappingFragment StoreEntitySet="студент">
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="імя" ColumnName="імя" />
+                <ScalarProperty Name="прізвище" ColumnName="прізвище" />
+                <ScalarProperty Name="телефон" ColumnName="телефон" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="факультет">
+            <EntityTypeMapping TypeName="DekanatDBModel.факультет">
+              <MappingFragment StoreEntitySet="факультет">
+                <ScalarProperty Name="FacultyID" ColumnName="FacultyID" />
+                <ScalarProperty Name="назва" ColumnName="назва" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
