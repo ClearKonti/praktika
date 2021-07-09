@@ -1,6 +1,53 @@
-﻿@model IEnumerable<DekanatWeb.Models.факультет>
+﻿@model IEnumerable<DekanatWeb.Models.FacultyViewModel>
 
-@{
+
+
+<div class="container">
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Номер факультету</th>
+                <th>Назва факультету</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+
+                    <tr>
+                        <td>@item.FacultyID</td>
+                        <td>@item.назва</td>
+
+                        <td>
+                            @Html.ActionLink("Редагувати", "Edit", new { id = item.FacultyID }) |
+                            @Html.ActionLink("Деталі", "Details", new { id = item.FacultyID }) |
+                            @Html.ActionLink("Видалити", "Delete", new { id = item.FacultyID })
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <div>
+        @*<p> <a>@Html.ActionLink("Створити новий", "Create")</a> </p>*@
+        <p><a href="@Url.Action("Create", "факультет")" class="btn btn-primary btn-default">Створити новий &raquo;</a></p>
+        <p><a href="@Url.Action("ExportToExcel", "факультет")" class="btn btn-primary btn-success">Експорт в Excel &raquo;</a></p>
+    </div>
+    
+     
+</div>
+
+
+
+
+
+
+
+
+
+@*@{
     ViewBag.Title = "Index";
 }
 
@@ -30,4 +77,4 @@
     </tr>
 }
 
-</table>
+</table>*@

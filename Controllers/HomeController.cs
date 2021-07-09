@@ -13,13 +13,8 @@ namespace DekanatWeb.Controllers
         DekanatDBEntities1 db = new DekanatDBEntities1();
         public ActionResult Index()
         {
-            List<FacultyViewModel> facultyList = db.факультет.Select(x => new FacultyViewModel {
-
-            FacultyID = x.FacultyID,
-            назва = x.назва
             
-            }).ToList();
-            return View(facultyList);
+            return View();
         }
 
         public ActionResult About()
