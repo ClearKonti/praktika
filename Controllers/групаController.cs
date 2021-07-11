@@ -11,119 +11,119 @@ using OfficeOpenXml;
 
 namespace DekanatWeb.Controllers
 {
-    public class спеціальністьController : Controller
+    public class групаController : Controller
     {
         private DekanatDBEntities1 db = new DekanatDBEntities1();
 
-        // GET: спеціальність
+        // GET: група
         public ActionResult Index()
         {
-            List<SpecialtyViewModel> specialtyList = db.спеціальність.Select(x => new SpecialtyViewModel
+            List<GroupViewModel> groupList = db.група.Select(x => new GroupViewModel
             {
-                SpecialtyId = x.SpecialtyId,
+                GroupId = x.GroupId,
                 назва = x.назва,
-                факультет = x.факультет
-                
+                SpecialtyId = x.SpecialtyId,
+                спеціальність = x.спеціальність
             }).ToList();
 
-            return View(specialtyList);
+            return View(groupList);
         }
 
-        // GET: спеціальність/Details/5
+        // GET: група/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            спеціальність спеціальність = db.спеціальність.Find(id);
-            if (спеціальність == null)
+            група група = db.група.Find(id);
+            if (група == null)
             {
                 return HttpNotFound();
             }
-            return View(спеціальність);
+            return View(група);
         }
 
-        // GET: спеціальність/Create
+        // GET: група/Create
         public ActionResult Create()
         {
-            ViewBag.FacultyId = new SelectList(db.факультет, "FacultyID", "назва");
+            ViewBag.SpecialtyId = new SelectList(db.спеціальність, "SpecialtyId", "назва");
             return View();
         }
 
-        // POST: спеціальність/Create
+        // POST: група/Create
         // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
         // сведения см. в разделе https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SpecialtyId,назва,FacultyId")] спеціальність спеціальність)
+        public ActionResult Create([Bind(Include = "GroupId,назва,SpecialtyId")] група група)
         {
             if (ModelState.IsValid)
             {
-                db.спеціальність.Add(спеціальність);
+                db.група.Add(група);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.FacultyId = new SelectList(db.факультет, "FacultyID", "назва", спеціальність.FacultyId);
-            return View(спеціальність);
+            ViewBag.SpecialtyId = new SelectList(db.спеціальність, "SpecialtyId", "назва", група.SpecialtyId);
+            return View(група);
         }
 
-        // GET: спеціальність/Edit/5
+        // GET: група/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            спеціальність спеціальність = db.спеціальність.Find(id);
-            if (спеціальність == null)
+            група група = db.група.Find(id);
+            if (група == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.FacultyId = new SelectList(db.факультет, "FacultyID", "назва", спеціальність.FacultyId);
-            return View(спеціальність);
+            ViewBag.SpecialtyId = new SelectList(db.спеціальність, "SpecialtyId", "назва", група.SpecialtyId);
+            return View(група);
         }
 
-        // POST: спеціальність/Edit/5
+        // POST: група/Edit/5
         // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
         // сведения см. в разделе https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SpecialtyId,назва,FacultyId")] спеціальність спеціальність)
+        public ActionResult Edit([Bind(Include = "GroupId,назва,SpecialtyId")] група група)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(спеціальність).State = EntityState.Modified;
+                db.Entry(група).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.FacultyId = new SelectList(db.факультет, "FacultyID", "назва", спеціальність.FacultyId);
-            return View(спеціальність);
+            ViewBag.SpecialtyId = new SelectList(db.спеціальність, "SpecialtyId", "назва", група.SpecialtyId);
+            return View(група);
         }
 
-        // GET: спеціальність/Delete/5
+        // GET: група/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            спеціальність спеціальність = db.спеціальність.Find(id);
-            if (спеціальність == null)
+            група група = db.група.Find(id);
+            if (група == null)
             {
                 return HttpNotFound();
             }
-            return View(спеціальність);
+            return View(група);
         }
 
-        // POST: спеціальність/Delete/5
+        // POST: група/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            спеціальність спеціальність = db.спеціальність.Find(id);
-            db.спеціальність.Remove(спеціальність);
+            група група = db.група.Find(id);
+            db.група.Remove(група);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -137,15 +137,15 @@ namespace DekanatWeb.Controllers
             base.Dispose(disposing);
         }
 
-
         public void ExportToExcel()
         {
 
-            List<SpecialtyViewModel> specialtyList = db.спеціальність.Select(x => new SpecialtyViewModel
+            List<GroupViewModel> groupList = db.група.Select(x => new GroupViewModel
             {
-                SpecialtyId = x.SpecialtyId,
+                GroupId = x.GroupId,
                 назва = x.назва,
-                факультет = x.факультет
+                SpecialtyId = x.SpecialtyId,
+                спеціальність = x.спеціальність
             }).ToList();
 
             ExcelPackage pck = new ExcelPackage();
@@ -153,35 +153,35 @@ namespace DekanatWeb.Controllers
 
             ws.Cells["A1:A3"].Style.Font.Bold = true;
             ws.Row(6).Style.Font.Bold = true;
-            ws.Cells[1, 1, 6 + specialtyList.Count, 3].Style.Font.Size = 14;
+            ws.Cells[1, 1, 6 + groupList.Count, 3].Style.Font.Size = 14;
 
-            ws.Cells[7, 1, 7 + specialtyList.Count, 2].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+            ws.Cells[7, 1, 7 + groupList.Count, 3].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
 
             ws.Cells["A1:B2"].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Double);
 
- 
-            ws.Cells[6, 1, 6 + specialtyList.Count, 3].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
-            ws.Cells[6, 1, 6 + specialtyList.Count, 2].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
-            ws.Cells[6, 1, 6 + specialtyList.Count, 3].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Medium);
+
+            ws.Cells[6, 1, 6 + groupList.Count, 3].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+            ws.Cells[6, 1, 6 + groupList.Count, 2].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+            ws.Cells[6, 1, 6 + groupList.Count, 3].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Medium);
 
             ws.Cells["A1"].Value = "Список";
-            ws.Cells["B1"].Value = "Спеціальності";
+            ws.Cells["B1"].Value = "Групи";
 
 
             ws.Cells["A2"].Value = "Дата";
             ws.Cells["B2"].Value = string.Format("{0:dd MMMM yyyy} у {0:H:mm tt}", DateTimeOffset.Now);
 
 
-            ws.Cells["A6"].Value = "Номер спеціальності";
-            ws.Cells["B6"].Value = "Назва спеціальності";
-            ws.Cells["C6"].Value = "Факультет";
+            ws.Cells["A6"].Value = "Номер групи";
+            ws.Cells["B6"].Value = "Назва групи";
+            ws.Cells["C6"].Value = "Назва спеціальності";
 
             int rowStart = 7;
-            foreach (var item in specialtyList)
+            foreach (var item in groupList)
             {
-                ws.Cells[string.Format("A{0}", rowStart)].Value = item.SpecialtyId;
+                ws.Cells[string.Format("A{0}", rowStart)].Value = item.GroupId;
                 ws.Cells[string.Format("B{0}", rowStart)].Value = item.назва;
-                ws.Cells[string.Format("C{0}", rowStart)].Value = item.факультет.назва;
+                ws.Cells[string.Format("C{0}", rowStart)].Value = item.спеціальність.назва;
                 rowStart++;
             }
 
@@ -193,6 +193,5 @@ namespace DekanatWeb.Controllers
             Response.End();
 
         }
-
     }
 }

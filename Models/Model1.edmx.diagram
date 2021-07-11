@@ -14,10 +14,16 @@
         <AssociationConnector Association="DekanatDBModel.FK_група_SpecialtyId" ManuallyRouted="false" />
         <AssociationConnector Association="DekanatDBModel.FK_студент_GroupId" ManuallyRouted="false" />
         <AssociationConnector Association="DekanatDBModel.FK_розклад_SubjectId" ManuallyRouted="true" >
-          <ConnectorPoint PointX="3.625" PointY="3.5093489583333328" />
-          <ConnectorPoint PointX="4.010416666666667" PointY="3.5093489583333324" />
-          <ConnectorPoint PointX="4.177083333333333" PointY="3.5093489583333328" />
-          <ConnectorPoint PointX="5.25" PointY="3.5093489583333328" />
+          <ConnectorPoint PointX="3.625" PointY="4.34568359375" />
+          <ConnectorPoint PointX="3.625" PointY="7.0179449891357386" />
+          <ConnectorPoint PointX="3.9374998923805" PointY="7.0179449891357386" />
+          <ConnectorPoint PointX="4.7499998923805" PointY="12.44344539794921" />
+          <ConnectorPoint PointX="4.5833332146759354" PointY="12.44344539794921" />
+          <ConnectorPoint PointX="4.5833332146759354" PointY="78.424523448350655" />
+          <ConnectorPoint PointX="4.4375" PointY="78.424523448350655" />
+          <ConnectorPoint PointX="4.582420214664447" PointY="65.19784264260187" />
+          <ConnectorPoint PointX="4.5842462146874245" PointY="65.03118597906365" />
+          <ConnectorPoint PointX="5.25" PointY="4.2686979166666656" />
         </AssociationConnector>
         <AssociationConnector Association="DekanatDBModel.FK_розклад_SpecialtyId" ManuallyRouted="false" />
         <AssociationConnector Association="DekanatDBModel.FK_спеціальність_FacultyId" ManuallyRouted="false" />

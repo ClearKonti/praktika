@@ -11,7 +11,8 @@ namespace DekanatWeb.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class факультет
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,8 +20,12 @@ namespace DekanatWeb.Models
         {
             this.спеціальність = new HashSet<спеціальність>();
         }
-    
+
+
+        [Display(Name = "Номер факультету")]
         public int FacultyID { get; set; }
+
+        [Display(Name = "Назва факультету")]
         public string назва { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

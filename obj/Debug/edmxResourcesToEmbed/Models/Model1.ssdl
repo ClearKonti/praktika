@@ -47,6 +47,7 @@
     <Property Name="імя" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="прізвище" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="телефон" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="дата_народження" Type="datetime" />
     <Property Name="GroupId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="факультет">

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище DekanatDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище DekanatDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="група">
           <Key>
             <PropertyRef Name="GroupId" />
@@ -52,6 +52,7 @@
           <Property Name="імя" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="прізвище" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="телефон" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="дата_народження" Type="datetime" />
           <Property Name="GroupId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="факультет">
@@ -159,8 +160,7 @@
             <End Role="студент" EntitySet="студент" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DekanatDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -221,6 +221,7 @@
           <Property Name="телефон" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="GroupId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="група" Relationship="Self.FK_студент_GroupId" FromRole="студент" ToRole="група" />
+          <Property Name="дата_народження" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="факультет">
           <Key>
@@ -380,6 +381,7 @@
           <EntitySetMapping Name="студент">
             <EntityTypeMapping TypeName="DekanatDBModel.студент">
               <MappingFragment StoreEntitySet="студент">
+                <ScalarProperty Name="дата_народження" ColumnName="дата_народження" />
                 <ScalarProperty Name="StudentId" ColumnName="StudentId" />
                 <ScalarProperty Name="імя" ColumnName="імя" />
                 <ScalarProperty Name="прізвище" ColumnName="прізвище" />

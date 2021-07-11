@@ -57,6 +57,7 @@
     <Property Name="телефон" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="GroupId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="група" Relationship="Self.FK_студент_GroupId" FromRole="студент" ToRole="група" />
+    <Property Name="дата_народження" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="факультет">
     <Key>

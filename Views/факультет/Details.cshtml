@@ -4,23 +4,40 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Подробиці</h2>
+
+
+
+
 
 <div>
-    <h4>факультет</h4>
+    <h4>Факультет</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.назва)
-        </dt>
+    @*<dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.назва)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.назва)
+            </dd>
+        </dl>*@
 
-        <dd>
-            @Html.DisplayFor(model => model.назва)
-        </dd>
+    <p style="font-size:large">
+        @Html.DisplayNameFor(model => model.назва)
+    </p>
 
-    </dl>
+    <p>
+        @Html.DisplayFor(model => model.назва)
+    </p>
+
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.FacultyID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+
+
+
+
+

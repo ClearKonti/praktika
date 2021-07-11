@@ -1,39 +1,75 @@
-﻿@model IEnumerable<DekanatWeb.Models.спеціальність>
+﻿@model IEnumerable<DekanatWeb.Models.SpecialtyViewModel>
 
-@{
-    ViewBag.Title = "Index";
-}
+<h2>Список спеціальностей</h2>
 
-<h2>Index</h2>
+<div class="container">
+<table class="table table-responsive">
+    <thead>
+        <tr>
+            <th>Номер спеціальності</th>
+            <th>Назва спеціальності</th>
+            <th>Факультет</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.назва)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.факультет.назва)
-        </th>
-        <th></th>
-    </tr>
+                <tr>
+                    <td>@item.SpecialtyId</td>
+                    <td>@item.назва</td>
+                    <td>@item.факультет.назва</td>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.назва)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.факультет.назва)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.SpecialtyId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.SpecialtyId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.SpecialtyId })
-        </td>
-    </tr>
-}
-
+                    <td>
+                        @Html.ActionLink("Редагувати", "Edit", new { id = item.SpecialtyId }) |
+                        @Html.ActionLink("Деталі", "Details", new { id = item.SpecialtyId }) |
+                        @Html.ActionLink("Видалити", "Delete", new { id = item.SpecialtyId })
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
 </table>
+<div>
+    <p><a href="@Url.Action("Create", "спеціальність")" class="btn btn-primary btn-default">Створити нову &raquo;</a></p>
+    <p><a href="@Url.Action("ExportToExcel", "спеціальність")" class="btn btn-success">Експорт в Excel &raquo;</a></p>
+</div>
+
+ </div>
+
+
+
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.назва)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.факультет.назва)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.назва)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.факультет.назва)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.SpecialtyId }) |
+                @Html.ActionLink("Details", "Details", new { id=item.SpecialtyId }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.SpecialtyId })
+            </td>
+        </tr>
+    }
+
+    </table>*@

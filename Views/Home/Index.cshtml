@@ -2,16 +2,21 @@
     ViewBag.Title = "Деканат - база даних";
 }
 
-<div >
+<div>
     <h1>База даних "Деканат"</h1>
     <p class="lead">На цьому сайті ви зможете дізнатися інформацію з деканату навчального закладу</p>
-    @*<p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>*@
-    
+    <p style="font-size: larger">Оберіть список, який Вас цікавить:</p>
 </div>
 
 <div>
-    @Html.ActionLink("Список факультетов", "Index", "факультет")<br />
-    @Html.ActionLink("Список специальностей", "Index", "спеціальність")
+    <ul>
+        <li> @Html.ActionLink("Список факультетів", "Index", "факультет", new { area = "" }, new { style = "font-size: large" }) </li>
+        <li> @Html.ActionLink("Список спеціальностей", "Index", "спеціальність", new { area = "" }, new { style = "font-size: large" })  </li>
+        <li> @Html.ActionLink("Список груп", "Index", "група", new { area = "" }, new { style = "font-size: large" })  </li>
+        <li> @Html.ActionLink("Список студентів", "Index", "студент", new { area = "" }, new { style = "font-size: large" })  </li>
+        <li> @Html.ActionLink("Список розкладів", "Index", "розклад", new { area = "" }, new { style = "font-size: large" })  </li>
+        <li> @Html.ActionLink("Список предметів", "Index", "предмет", new { area = "" }, new { style = "font-size: large" })  </li>
+    </ul>
 </div>
 
 @*<div class="row">

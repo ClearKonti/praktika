@@ -47,6 +47,7 @@
     <EntitySetMapping Name="студент">
       <EntityTypeMapping TypeName="DekanatDBModel.студент">
         <MappingFragment StoreEntitySet="студент">
+          <ScalarProperty Name="дата_народження" ColumnName="дата_народження" />
           <ScalarProperty Name="StudentId" ColumnName="StudentId" />
           <ScalarProperty Name="імя" ColumnName="імя" />
           <ScalarProperty Name="прізвище" ColumnName="прізвище" />

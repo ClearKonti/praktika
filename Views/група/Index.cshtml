@@ -1,0 +1,79 @@
+﻿@model IEnumerable<DekanatWeb.Models.GroupViewModel>
+
+<h2>Список груп</h2>
+
+<div class="container">
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Номер групи</th>
+                <th>Назва групи</th>
+                <th>Спеціальність</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+
+            <tr>
+                <td>@item.GroupId</td>
+                <td>@item.назва</td>
+                <td>@item.спеціальність.назва</td>
+
+
+                <td>
+                    @Html.ActionLink("Редагувати", "Edit", new { id = item.GroupId }) |
+                    @Html.ActionLink("Деталі", "Details", new { id = item.GroupId }) |
+                    @Html.ActionLink("Видалити", "Delete", new { id = item.GroupId })
+                </td>
+            </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <div>
+        <p><a href="@Url.Action("Create", "група")" class="btn btn-primary btn-default">Створити нову &raquo;</a></p>
+        <p><a href="@Url.Action("ExportToExcel", "група")" class="btn btn-success">Експорт в Excel &raquo;</a></p>
+    </div>
+
+
+</div>
+
+
+
+
+@*<h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.назва)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.спеціальність.назва)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.назва)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.спеціальність.назва)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.GroupId }) |
+                @Html.ActionLink("Details", "Details", new { id=item.GroupId }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.GroupId })
+            </td>
+        </tr>
+    }
+
+    </table>*@

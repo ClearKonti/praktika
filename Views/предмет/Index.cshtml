@@ -1,0 +1,81 @@
+﻿@model IEnumerable<DekanatWeb.Models.SubjectViewModel>
+
+<h2>Список предметів</h2>
+
+<div class="container">
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Номер предмету</th>
+                <th>Назва предмету</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+
+                    <tr>
+                        <td>@item.SubjectId</td>
+                        <td>@item.назва</td>
+
+                        <td>
+                            @Html.ActionLink("Редагувати", "Edit", new { id = item.SubjectId }) |
+                            @Html.ActionLink("Деталі", "Details", new { id = item.SubjectId }) |
+                            @Html.ActionLink("Видалити", "Delete", new { id = item.SubjectId })
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <div>
+        <p><a href="@Url.Action("Create", "предмет")" class="btn btn-primary btn-default">Створити новий &raquo;</a></p>
+        <p><a href="@Url.Action("ExportToExcel", "предмет")" class="btn btn-success">Експорт в Excel &raquo;</a></p>
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.назва)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.назва)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SubjectId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SubjectId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SubjectId })
+        </td>
+    </tr>
+}
+
+</table>*@

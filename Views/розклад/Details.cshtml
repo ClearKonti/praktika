@@ -1,0 +1,98 @@
+﻿@model DekanatWeb.Models.розклад
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>розклад</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.курс)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.курс)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.семестр)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.семестр)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.лекційні_часи)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.лекційні_часи)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.практичні_часи)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.практичні_часи)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.лабораторні_часи)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.лабораторні_часи)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.форма_захисту)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.форма_захисту)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.курсова_робота)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.курсова_робота)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.курсові_часи)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.курсові_часи)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.предмет.назва)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.предмет.назва)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.спеціальність.назва)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.спеціальність.назва)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CurriculumId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

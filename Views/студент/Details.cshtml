@@ -1,0 +1,50 @@
+﻿@model DekanatWeb.Models.студент
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>студент</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.імя)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.імя)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.прізвище)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.прізвище)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.телефон)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.телефон)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.група.назва)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.група.назва)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.StudentId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

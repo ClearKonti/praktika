@@ -19,6 +19,7 @@ namespace DekanatWeb.Models
         public string прізвище { get; set; }
         public string телефон { get; set; }
         public int GroupId { get; set; }
+        public Nullable<System.DateTime> дата_народження { get; set; }
     
         public virtual група група { get; set; }
     }

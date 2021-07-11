@@ -135,6 +135,7 @@ namespace DekanatWeb.Controllers
 
         public void ExportToExcel()
         {
+
             List<FacultyViewModel> facultyList = db.факультет.Select(x => new FacultyViewModel
             {
                 FacultyID = x.FacultyID,
@@ -145,27 +146,25 @@ namespace DekanatWeb.Controllers
             ExcelWorksheet ws = pck.Workbook.Worksheets.Add("Report");
 
             ws.Cells["A1:A3"].Style.Font.Bold = true;
-            ws.Cells["A6:B6"].Style.Font.Bold = true;
             ws.Row(6).Style.Font.Bold = true;
-            ws.Column(1).Style.Font.Size = 14;
-            ws.Column(2).Style.Font.Size = 14;
+            ws.Cells[1, 1, 6 + facultyList.Count, 2].Style.Font.Size = 14;
+
 
             ws.Cells[7,1,7+facultyList.Count, 2].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
 
-            ws.Cells["A1:B3"].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Double);
+            ws.Cells["A1:B2"].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Double);
 
-            ws.Cells[6, 1, 6 + facultyList.Count, 2].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Medium);
+            
             ws.Cells[6, 1, 6 + facultyList.Count, 2].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
             ws.Cells[6, 1, 6 + facultyList.Count, 1].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
-            
+            ws.Cells[6, 1, 6 + facultyList.Count, 2].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Medium);
+
             ws.Cells["A1"].Value = "Список";
             ws.Cells["B1"].Value = "Факультети";
 
-            ws.Cells["A2"].Value = "Звіт";
-            ws.Cells["B2"].Value = "Звіт №1";
 
-            ws.Cells["A3"].Value = "Дата";
-            ws.Cells["B3"].Value = string.Format("{0:dd MMMM yyyy} at {0:H:mm tt}", DateTimeOffset.Now);
+            ws.Cells["A2"].Value = "Дата";
+            ws.Cells["B2"].Value = string.Format("{0:dd MMMM yyyy} у {0:H:mm tt}", DateTimeOffset.Now);
 
      
             ws.Cells["A6"].Value = "Номер факультету";
@@ -185,6 +184,7 @@ namespace DekanatWeb.Controllers
             Response.AddHeader("content-disposition", "attachment: filename=" + "ExcelReport.xlsx");
             Response.BinaryWrite(pck.GetAsByteArray());
             Response.End();
+
         }
     }
 }

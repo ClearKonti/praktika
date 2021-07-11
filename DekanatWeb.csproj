@@ -140,12 +140,17 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\групаController.cs" />
+    <Compile Include="Controllers\предметController.cs" />
+    <Compile Include="Controllers\розкладController.cs" />
     <Compile Include="Controllers\спеціальністьController.cs" />
+    <Compile Include="Controllers\студентController.cs" />
     <Compile Include="Controllers\факультетController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\FacultyViewModel.cs" />
+    <Compile Include="Models\GroupViewModel.cs" />
     <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -161,6 +166,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\ScheduleViewModel.cs" />
+    <Compile Include="Models\SpecialtyViewModel.cs" />
+    <Compile Include="Models\StudentViewModel.cs" />
+    <Compile Include="Models\SubjectViewModel.cs" />
     <Compile Include="Models\група.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -244,6 +253,26 @@
     <Content Include="Views\спеціальність\Details.cshtml" />
     <Content Include="Views\спеціальність\Edit.cshtml" />
     <Content Include="Views\спеціальність\Index.cshtml" />
+    <Content Include="Views\група\Create.cshtml" />
+    <Content Include="Views\група\Delete.cshtml" />
+    <Content Include="Views\група\Details.cshtml" />
+    <Content Include="Views\група\Edit.cshtml" />
+    <Content Include="Views\група\Index.cshtml" />
+    <Content Include="Views\розклад\Create.cshtml" />
+    <Content Include="Views\розклад\Delete.cshtml" />
+    <Content Include="Views\розклад\Details.cshtml" />
+    <Content Include="Views\розклад\Edit.cshtml" />
+    <Content Include="Views\розклад\Index.cshtml" />
+    <Content Include="Views\предмет\Create.cshtml" />
+    <Content Include="Views\предмет\Delete.cshtml" />
+    <Content Include="Views\предмет\Details.cshtml" />
+    <Content Include="Views\предмет\Edit.cshtml" />
+    <Content Include="Views\предмет\Index.cshtml" />
+    <Content Include="Views\студент\Create.cshtml" />
+    <Content Include="Views\студент\Delete.cshtml" />
+    <Content Include="Views\студент\Details.cshtml" />
+    <Content Include="Views\студент\Edit.cshtml" />
+    <Content Include="Views\студент\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

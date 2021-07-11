@@ -1,0 +1,56 @@
+﻿@model DekanatWeb.Models.студент
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>студент</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.імя)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.імя)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.прізвище)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.прізвище)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.телефон)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.телефон)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.група.назва)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.група.назва)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
