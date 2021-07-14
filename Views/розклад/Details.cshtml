@@ -1,98 +1,112 @@
 ﻿@model DekanatWeb.Models.розклад
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Деталі";
 }
 
-<h2>Details</h2>
+<h2>Деталі</h2>
 
 <div>
-    <h4>розклад</h4>
+
+    <h4>
+        <b> Розклад №@Html.DisplayFor(model => model.CurriculumId) </b>
+    </h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.курс)
+
+    <dl class="dl-horizontal" style="font-size: 12pt">
+
+        <dt style="font-weight: lighter">
+            @Html.DisplayNameFor(model => model.CurriculumId)
         </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.курс)
+        <dd style="font-weight: bold">
+            @Html.DisplayFor(model => model.CurriculumId)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.семестр)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.семестр)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.лекційні_часи)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.лекційні_часи)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.практичні_часи)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.практичні_часи)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.лабораторні_часи)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.лабораторні_часи)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.форма_захисту)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.форма_захисту)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.курсова_робота)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.курсова_робота)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.курсові_часи)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.курсові_часи)
-        </dd>
-
-        <dt>
+        <dt style="font-weight: lighter">
             @Html.DisplayNameFor(model => model.предмет.назва)
         </dt>
 
-        <dd>
+        <dd style="font-weight: bold">
             @Html.DisplayFor(model => model.предмет.назва)
         </dd>
 
-        <dt>
+        <dt style="font-weight: lighter">
             @Html.DisplayNameFor(model => model.спеціальність.назва)
         </dt>
 
-        <dd>
+        <dd style="font-weight: bold">
             @Html.DisplayFor(model => model.спеціальність.назва)
         </dd>
 
+        <dt style="font-weight: lighter">
+            @Html.DisplayNameFor(model => model.курс)
+        </dt>
+
+        <dd style="font-weight: bold">
+            @Html.DisplayFor(model => model.курс)
+        </dd>
+
+        <dt style="font-weight: lighter">
+            @Html.DisplayNameFor(model => model.семестр)
+        </dt>
+
+        <dd style="font-weight: bold">
+            @Html.DisplayFor(model => model.семестр)
+        </dd>
+
+        <dt style="font-weight: lighter">
+            @Html.DisplayNameFor(model => model.лекційні_часи)
+        </dt>
+
+        <dd style="font-weight: bold">
+            @Html.DisplayFor(model => model.лекційні_часи)
+        </dd>
+
+        <dt style="font-weight: lighter">
+            @Html.DisplayNameFor(model => model.практичні_часи)
+        </dt>
+
+        <dd style="font-weight: bold">
+            @Html.DisplayFor(model => model.практичні_часи)
+        </dd>
+
+        <dt style="font-weight: lighter">
+            @Html.DisplayNameFor(model => model.лабораторні_часи)
+        </dt>
+
+        <dd style="font-weight: bold">
+            @Html.DisplayFor(model => model.лабораторні_часи)
+        </dd>
+
+        <dt style="font-weight: lighter">
+            @Html.DisplayNameFor(model => model.форма_захисту)
+        </dt>
+
+        <dd style="font-weight: bold">
+            @Html.DisplayFor(model => model.форма_захисту)
+        </dd>
+
+        <dt style="font-weight: lighter">
+            @Html.DisplayNameFor(model => model.курсова_робота)
+        </dt>
+
+        <dd style="font-weight: bold">
+            @Html.DisplayFor(model => model.курсова_робота)
+        </dd>
+
+        <dt style="font-weight: lighter">
+            @Html.DisplayNameFor(model => model.курсові_часи)
+        </dt>
+
+        <dd style="font-weight: bold">
+            @Html.DisplayFor(model => model.курсові_часи)
+        </dd>
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.CurriculumId }) |
-    @Html.ActionLink("Back to List", "Index")
+
+<p style="font-size:10pt">
+    <br />
+    &lArr; @Html.ActionLink("Повернутися до списку", "Index")  |
+    @Html.ActionLink("Редагувати", "Edit", new { id = Model.CurriculumId })
 </p>

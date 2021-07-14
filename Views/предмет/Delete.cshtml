@@ -1,32 +1,45 @@
 ﻿@model DekanatWeb.Models.предмет
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Видалення";
 }
 
-<h2>Delete</h2>
+<h2>Видалення</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Ви впевнені, що хочете видалити цей предмет?</h3>
 <div>
-    <h4>предмет</h4>
+    <h4>Предмет: @Html.DisplayFor(model => model.назва)</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
+
+    <dl class="dl-horizontal" style="font-size: 12pt">
+
+        <dt style="font-weight: lighter">
+            @Html.DisplayNameFor(model => model.SubjectId)
+        </dt>
+
+        <dd style="font-weight: bold">
+            @Html.DisplayFor(model => model.SubjectId)
+        </dd>
+
+        <dt style="font-weight: lighter">
             @Html.DisplayNameFor(model => model.назва)
         </dt>
 
-        <dd>
+        <dd style="font-weight: bold">
             @Html.DisplayFor(model => model.назва)
         </dd>
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <p>
+                <input type="submit" value="Видалити" class="btn btn-default btn-danger" />
+            </p>
+            &lArr; @Html.ActionLink("Повернутися до списку", "Index") 
         </div>
     }
 </div>

@@ -1,34 +1,50 @@
 ﻿@model DekanatWeb.Models.група
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Деталі";
 }
 
-<h2>Details</h2>
+<h2>Деталі</h2>
+
 
 <div>
-    <h4>група</h4>
+
+    <h4>
+        <b> Група: @Html.DisplayFor(model => model.назва) </b>
+    </h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
+
+
+    <dl class="dl-horizontal" style="font-size: 12pt">
+
+        <dt style="font-weight: lighter">
+            @Html.DisplayNameFor(model => model.GroupId)
+        </dt>
+
+        <dd style="font-weight: bold">
+            @Html.DisplayFor(model => model.GroupId)
+        </dd>
+
+        <dt style="font-weight: lighter">
             @Html.DisplayNameFor(model => model.назва)
         </dt>
 
-        <dd>
+        <dd style="font-weight: bold">
             @Html.DisplayFor(model => model.назва)
         </dd>
 
-        <dt>
+        <dt style="font-weight: lighter">
             @Html.DisplayNameFor(model => model.спеціальність.назва)
         </dt>
 
-        <dd>
+        <dd style="font-weight: bold">
             @Html.DisplayFor(model => model.спеціальність.назва)
         </dd>
 
     </dl>
 </div>
+
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.GroupId }) |
-    @Html.ActionLink("Back to List", "Index")
+    &lArr; @Html.ActionLink("Повернутися до списку", "Index") |  
+    @Html.ActionLink("Редагувати", "Edit", new { id = Model.SpecialtyId })
 </p>

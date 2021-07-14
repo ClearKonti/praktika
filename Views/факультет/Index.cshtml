@@ -1,5 +1,10 @@
 ﻿@model IEnumerable<DekanatWeb.Models.FacultyViewModel>
 
+@{
+    ViewBag.Title = "Факультети";
+}
+
+
 <h2>Список факультетів</h2>
 
 <div class="container">
@@ -34,8 +39,8 @@
         <p><a href="@Url.Action("Create", "факультет")" class="btn btn-primary btn-default">Створити новий &raquo;</a></p>
         <p><a href="@Url.Action("ExportToExcel", "факультет")" class="btn btn-success">Експорт в Excel &raquo;</a></p>
     </div>
-    
-     
+
+
 </div>
 
 

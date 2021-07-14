@@ -11,7 +11,8 @@ namespace DekanatWeb.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class предмет
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,8 +20,13 @@ namespace DekanatWeb.Models
         {
             this.розклад = new HashSet<розклад>();
         }
-    
+
+
+        [Display(Name = "Номер предмету")]
         public int SubjectId { get; set; }
+
+        [StringLength(50)]
+        [Display(Name = "Назва предмету")]
         public string назва { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

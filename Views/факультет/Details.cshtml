@@ -1,43 +1,43 @@
 ﻿@model DekanatWeb.Models.факультет
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Деталі";
 }
 
-<h2>Подробиці</h2>
-
-
-
-
+<h2>Деталі</h2>
 
 <div>
-    <h4>Факультет</h4>
+    <h4>
+        <b> Факультет: @Html.DisplayFor(model => model.назва) </b>
+    </h4>
     <hr />
-    @*<dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.назва)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.назва)
-            </dd>
-        </dl>*@
 
-    <p style="font-size:large">
-        @Html.DisplayNameFor(model => model.назва)
-    </p>
+    <dl class="dl-horizontal" style="font-size: 12pt">
 
-    <p>
-        @Html.DisplayFor(model => model.назва)
-    </p>
+        <dt style="font-weight: lighter">
+            @Html.DisplayNameFor(model => model.FacultyID)
+        </dt>
+
+        <dd style="font-weight: bold">
+            @Html.DisplayFor(model => model.FacultyID)
+        </dd>
+
+        <dt style="font-weight: lighter">
+            @Html.DisplayNameFor(model => model.назва)
+        </dt>
+
+        <dd style="font-weight: bold">
+            @Html.DisplayFor(model => model.назва)
+        </dd>
+    </dl>
 
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.FacultyID }) |
-    @Html.ActionLink("Back to List", "Index")
+
+<p style="font-size:12pt">
+    <br />
+    &lArr; @Html.ActionLink("Повернутися до списку", "Index")  |
+    @Html.ActionLink("Редагувати", "Edit", new { id = Model.FacultyID })
 </p>
-
-
-
 
 
 

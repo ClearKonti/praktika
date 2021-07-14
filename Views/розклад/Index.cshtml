@@ -1,5 +1,10 @@
 ﻿@model IEnumerable<DekanatWeb.Models.ScheduleViewModel>
 
+@{
+    ViewBag.Title = "Розклади";
+}
+
+
 <h2>Cписок розкладів</h2>
 
 <div class="container">
@@ -55,87 +60,3 @@
 
 
 </div>
-
-
-
-
-
-@*<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.курс)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.семестр)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.лекційні_часи)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.практичні_часи)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.лабораторні_часи)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.форма_захисту)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.курсова_робота)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.курсові_часи)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.предмет.назва)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.спеціальність.назва)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.курс)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.семестр)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.лекційні_часи)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.практичні_часи)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.лабораторні_часи)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.форма_захисту)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.курсова_робота)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.курсові_часи)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.предмет.назва)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.спеціальність.назва)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CurriculumId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CurriculumId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CurriculumId })
-        </td>
-    </tr>
-}
-
-</table>*@

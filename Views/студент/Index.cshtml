@@ -1,5 +1,10 @@
 ﻿@model IEnumerable<DekanatWeb.Models.StudentViewModel>
 
+@{
+    ViewBag.Title = "Студенти";
+}
+
+
 <h2>Список студентів</h2>
 
 <div class="container">
@@ -25,7 +30,7 @@
                         <td>@item.імя</td>
                         <td>@item.прізвище</td>
                         <td>@string.Format("{0:yyyy-MM-dd}", item.дата_народження)</td>
-                        <td>@item.телефон</td> 
+                        <td>@item.телефон</td>
                         <td>@item.GroupId</td>
 
                         <td>
@@ -48,57 +53,3 @@
 
 
 
-
-
-
-@*<h2>Index</h2>
-
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.імя)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.прізвище)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.телефон)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.група.назва)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.дата_народження)
-            </th>
-            <th></th>
-        </tr>
-
-    @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.імя)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.прізвище)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.телефон)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.група.назва)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.дата_народження)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.StudentId }) |
-            @Html.ActionLink("Details", "Details", new { id = item.StudentId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.StudentId })
-        </td>
-    </tr>
-    }
-
-    </table>*@

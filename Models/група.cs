@@ -11,7 +11,8 @@ namespace DekanatWeb.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class група
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,9 +20,16 @@ namespace DekanatWeb.Models
         {
             this.студент = new HashSet<студент>();
         }
-    
+
+
+        [Display(Name = "Номер групи")]
         public int GroupId { get; set; }
+
+        [RegularExpression(@"[0-9]{2}[1-9]{1}-[0-9]{2}-[1-9]{1}$", ErrorMessage = "Введіть назву групи у форматі 121-19-1")]
+        [Display(Name = "Назва групи")]
         public string назва { get; set; }
+
+        [Display(Name = "Номер спеціальності")]
         public int SpecialtyId { get; set; }
     
         public virtual спеціальність спеціальність { get; set; }

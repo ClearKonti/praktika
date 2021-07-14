@@ -11,16 +11,32 @@ namespace DekanatWeb.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class студент
     {
+
+        [Display(Name = "Номер студента")]
         public int StudentId { get; set; }
+
+        [RegularExpression(@"^([А-Я]{1}[а-яії]{1,23})$", ErrorMessage = "Ім'я повинне починатися з великої літери та містити тільки літери українського алфавіту")]
+        [Display(Name = "Ім'я")]
         public string імя { get; set; }
-        public string прізвище { get; set; }
+
+        [RegularExpression(@"^([А-Я,І]{1}[а-яії]{1,23})$", ErrorMessage = "Прізвище повинне починатися з великої літери та містити тільки літери українського алфавіту")]
+        [Display(Name = "Прізвище ")]
+        public string прізвище { get; set; } 
+
+        [RegularExpression(@"0[0-9]{2}[0-9]{7}$", ErrorMessage = "Введіть телефон у форматі 0991234567")]
+        [Display(Name = "Телефон")]
         public string телефон { get; set; }
+
+        [Display(Name = "Номер групи")]
         public int GroupId { get; set; }
+
+        [RegularExpression(@"[1-2]{1}[9,0]{1}[0-9][2]-[0-1]{1}[1-9]{1}-[0-3]{1}[1-9]{1}$", ErrorMessage = "Введіть дату у форматі гггг-мм-дд")]
+        [Display(Name = "Дата народження")]
         public Nullable<System.DateTime> дата_народження { get; set; }
-    
         public virtual група група { get; set; }
     }
 }

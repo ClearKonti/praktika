@@ -25,6 +25,7 @@ namespace DekanatWeb.Models
         [Display(Name = "Номер факультету")]
         public int FacultyID { get; set; }
 
+        [StringLength(50)]
         [Display(Name = "Назва факультету")]
         public string назва { get; set; }
     
